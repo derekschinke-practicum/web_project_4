@@ -1,0 +1,9 @@
+@import url('./__logo/header__logo.css');
+
+.header {
+  padding-top: 45px;
+  margin: 0 auto;
+  width: 882px;
+  height: 74px;
+  border-bottom: 1px solid #545454;
+}
