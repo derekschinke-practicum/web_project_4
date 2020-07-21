@@ -1,0 +1,11 @@
+@import url('./_edit/button_edit.css');
+@import url('./_add/button_add.css');
+
+.button {
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.6;
+}
