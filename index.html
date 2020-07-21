@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
 
-  <body>
+  <body class="body">
     <div class="root">
       <header class="header">
         <img
@@ -16,6 +16,26 @@
           class="header__logo"
         />
       </header>
+
+      <main>
+        <section class="profile">
+          <div class="profile__data">
+            <img
+              src="./images/avatar.jpg"
+              alt="Jacques Cousteau"
+              class="profile__avatar"
+            />
+            <div class="profile__info">
+              <div class="profile__text">
+                <h1 class="profile__name">Jacques Cousteau</h1>
+                <p class="profile__about">Explorer</p>
+              </div>
+              <button class="button button_edit"></button>
+            </div>
+          </div>
+          <button class="button button_add"></button>
+        </section>
+      </main>
     </div>
 
     <script src="./scripts/index.js"></script>
