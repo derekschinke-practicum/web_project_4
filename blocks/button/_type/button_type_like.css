@@ -1,0 +1,11 @@
+.button_type_like {
+  width: 18.13px;
+  height: 20.76px;
+  margin-top: 31px;
+  background-color: transparent;
+  border: none;
+  background-image: url('../../../images/like.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 50%;
+}

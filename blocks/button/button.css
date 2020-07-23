@@ -1,11 +1,12 @@
-@import url('./_edit/button_edit.css');
-@import url('./_add/button_add.css');
+@import url('./_type/button_type_edit.css');
+@import url('./_type/button_type_add.css');
+@import url('./_type/button_type_like.css');
+
+@import url('./_opacity/button_opacity_0.6.css');
+@import url('./_opacity/button_opacity_0.8.css');
+@import url('./_opacity/button_opacity_1.css');
 
 .button {
   transition: opacity 0.2s ease;
   cursor: pointer;
-}
-
-.button:hover {
-  opacity: 0.6;
 }
