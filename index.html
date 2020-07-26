@@ -50,7 +50,7 @@
                   role="img"
                   aria-label="Yosemite Valley"
                   class="element__image"
-                  style="background-image: url('./images/yosemite.jpg');"
+                  style="background-image: url('./images/cards/yosemite.jpg');"
                 ></div>
                 <div class="element__info">
                   <h2 class="element__title">Yosemite Valley</h2>
@@ -67,7 +67,9 @@
                   role="img"
                   aria-label="Lake Louise"
                   class="element__image"
-                  style="background-image: url('./images/lake-louise.jpg');"
+                  style="
+                    background-image: url('./images/cards/lake-louise.jpg');
+                  "
                 ></div>
                 <div class="element__info">
                   <h2 class="element__title">Lake Louise</h2>
@@ -84,7 +86,9 @@
                   role="img"
                   aria-label="Bald Mountains"
                   class="element__image"
-                  style="background-image: url('./images/bald-mountains.jpg');"
+                  style="
+                    background-image: url('./images/cards/bald-mountains.jpg');
+                  "
                 ></div>
                 <div class="element__info">
                   <h2 class="element__title">Bald Mountains</h2>
@@ -101,7 +105,7 @@
                   role="img"
                   aria-label="Latemar"
                   class="element__image"
-                  style="background-image: url('./images/latemar.jpg');"
+                  style="background-image: url('./images/cards/latemar.jpg');"
                 ></div>
                 <div class="element__info">
                   <h2 class="element__title">Latemar</h2>
@@ -118,7 +122,7 @@
                   role="img"
                   aria-label="Vanoise National Park"
                   class="element__image"
-                  style="background-image: url('./images/vanois.jpg');"
+                  style="background-image: url('./images/cards/vanois.jpg');"
                 ></div>
                 <div class="element__info">
                   <h2 class="element__title">Vanoise National Park</h2>
@@ -135,7 +139,7 @@
                   role="img"
                   aria-label="Lago di Braies"
                   class="element__image"
-                  style="background-image: url('./images/lago.jpg');"
+                  style="background-image: url('./images/cards/lago.jpg');"
                 ></div>
                 <div class="element__info">
                   <h2 class="element__title">Lago di Braies</h2>
@@ -149,7 +153,37 @@
           </ul>
         </section>
       </main>
+
       <footer class="footer">© 2020 Around The U.S.</footer>
+
+      <div class="popup popup_opened">
+        <div class="popup__container">
+          <button
+            aria-label="Close"
+            class="button button_type_close button_opacity_0.6"
+          ></button>
+          <h2 class="popup__title">Edit profile</h2>
+          <form class="popup__form">
+            <input
+              type="text"
+              class="popup__input"
+              placeholder="Name"
+              value="Jacques Cousteau"
+            />
+            <input
+              type="text"
+              class="popup__input"
+              placeholder="About me"
+              value="Explorer"
+            />
+            <input
+              type="submit"
+              value="Save"
+              class="button button_type_save button_opacity_0.8"
+            />
+          </form>
+        </div>
+      </div>
     </div>
 
     <script src="./scripts/index.js"></script>

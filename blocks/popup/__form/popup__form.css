@@ -1,0 +1,6 @@
+.popup__form {
+  margin: 0 auto;
+  width: 358px;
+  transform: translateY(-40.7px);
+  padding-top: calc(54px - 29.74px);
+}
