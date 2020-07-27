@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Around The U.S.</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+
+  <body class="body">
+    <div class="root">
+      <header class="header">
+        <img
+          src="./images/logo.svg"
+          alt="Around The U.S."
+          class="header__logo"
+        />
+      </header>
+
+      <main class="main">
+        <section class="profile">
+          <div class="profile__data">
+            <img
+              src="./images/avatar.jpg"
+              alt="Jacques Cousteau"
+              class="profile__avatar"
+            />
+            <div class="profile__info">
+              <div class="profile__text">
+                <h1 class="profile__name">Jacques Cousteau</h1>
+                <p class="profile__job">Explorer</p>
+              </div>
+              <button
+                aria-label="Edit"
+                class="button button_type_edit button_opacity_0.6"
+              ></button>
+            </div>
+          </div>
+          <button
+            aria-label="Add"
+            class="button button_type_add button_opacity_0.6"
+          ></button>
+        </section>
+
+        <section class="elements">
+          <ul class="elements__list">
+            <li class="element">
+              <div class="element__card">
+                <div
+                  role="img"
+                  aria-label="Yosemite Valley"
+                  class="element__image"
+                  style="background-image: url('./images/cards/yosemite.jpg');"
+                ></div>
+                <div class="element__info">
+                  <h2 class="element__title">Yosemite Valley</h2>
+                  <button
+                    aria-label="Like"
+                    class="button button_type_like button_opacity_1"
+                  ></button>
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <div
+                  role="img"
+                  aria-label="Lake Louise"
+                  class="element__image"
+                  style="
+                    background-image: url('./images/cards/lake-louise.jpg');
+                  "
+                ></div>
+                <div class="element__info">
+                  <h2 class="element__title">Lake Louise</h2>
+                  <button
+                    aria-label="Like"
+                    class="button button_type_like button_opacity_1"
+                  ></button>
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <div
+                  role="img"
+                  aria-label="Bald Mountains"
+                  class="element__image"
+                  style="
+                    background-image: url('./images/cards/bald-mountains.jpg');
+                  "
+                ></div>
+                <div class="element__info">
+                  <h2 class="element__title">Bald Mountains</h2>
+                  <button
+                    aria-label="Like"
+                    class="button button_type_like button_opacity_1"
+                  ></button>
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <div
+                  role="img"
+                  aria-label="Latemar"
+                  class="element__image"
+                  style="background-image: url('./images/cards/latemar.jpg');"
+                ></div>
+                <div class="element__info">
+                  <h2 class="element__title">Latemar</h2>
+                  <button
+                    aria-label="Like"
+                    class="button button_type_like button_opacity_1"
+                  ></button>
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <div
+                  role="img"
+                  aria-label="Vanoise National Park"
+                  class="element__image"
+                  style="background-image: url('./images/cards/vanois.jpg');"
+                ></div>
+                <div class="element__info">
+                  <h2 class="element__title">Vanoise National Park</h2>
+                  <button
+                    aria-label="Like"
+                    class="button button_type_like button_opacity_1"
+                  ></button>
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <div
+                  role="img"
+                  aria-label="Lago di Braies"
+                  class="element__image"
+                  style="background-image: url('./images/cards/lago.jpg');"
+                ></div>
+                <div class="element__info">
+                  <h2 class="element__title">Lago di Braies</h2>
+                  <button
+                    aria-label="Like"
+                    class="button button_type_like button_opacity_1"
+                  ></button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer">© 2020 Around The U.S.</footer>
+
+      <div class="popup">
+        <div class="popup__container">
+          <button
+            aria-label="Close"
+            class="button button_type_close button_opacity_0.6"
+          ></button>
+          <h2 class="popup__title">Edit profile</h2>
+          <form class="popup__form">
+            <input
+              type="text"
+              class="popup__input"
+              placeholder="Name"
+              value="Jacques Cousteau"
+              id="popup__name"
+            />
+            <input
+              type="text"
+              class="popup__input"
+              placeholder="About me"
+              value="Explorer"
+              id="popup__job"
+            />
+            <input
+              type="submit"
+              value="Save"
+              class="button button_type_save button_opacity_0.8"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

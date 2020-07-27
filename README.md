@@ -1,18 +1,23 @@
 # Project 4: Around The U.S.
 
+## [Web Developer from Practicum by Yandex](https://practicum.yandex.com/web/)
+
 ### Overview
 
-- Figma
-- Images
+This project is part of the Basic JavaScript and Working with the Browser sprint
+for the Web Developer course at Practicum by Yandex.
 
-**Figma**
+### Technologies Used
 
-- [Link to the project in Figma](https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+HTML & CSS technologies it demonstrates are:
 
-**Images**
+- flexbox
+- <abbr title="Block, Element, Modifier">BEM</abbr> methodology
+- media queries for responsiveness
+- using <abbr title="Document Object Model">DOM</abbr> in JavaScript to edit
+  page content
 
-The way you'll do this at work is by exporting images directly from Figma — we
-recommend doing that to practice more. Don't forget to optimize them
-[here](https://tinypng.com/), so your project loads faster.
+The website can be accessed
+[here](https://derekschinke-practicum.github.io/web_project_4/).
 
-Have fun with JavaScript!
+###### [Yandex.Practicum](https://practicum.yandex.com/) | [Яндекс.Практикум](https://praktikum.yandex.ru/)

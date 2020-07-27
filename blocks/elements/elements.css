@@ -1,0 +1,11 @@
+@import url('./__list/elements__list.css');
+
+.elements {
+  padding-top: 51px;
+}
+
+@media screen and (max-width: 919px) {
+  .elements {
+    padding-top: 36px;
+  }
+}

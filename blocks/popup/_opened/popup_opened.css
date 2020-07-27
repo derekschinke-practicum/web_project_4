@@ -1,0 +1,4 @@
+.popup_opened {
+  display: grid;
+  place-items: center;
+}
