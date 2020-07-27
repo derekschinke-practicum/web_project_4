@@ -11,3 +11,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 919px) {
+  .profile {
+    padding-top: 42px;
+    width: 282px;
+    flex-direction: column;
+  }
+}

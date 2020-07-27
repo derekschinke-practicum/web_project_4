@@ -12,3 +12,11 @@
   border: none;
   transform: rotate(45deg);
 }
+
+@media screen and (max-width: 919px) {
+  .button_type_close {
+    width: 19px;
+    height: 19px;
+    bottom: 19px;
+  }
+}

@@ -14,5 +14,11 @@
   line-height: 22px;
   text-align: center;
 
-  color: #ffffff;
+  color: #fff;
+}
+
+@media screen and (max-width: 919px) {
+  .button_type_save {
+    width: calc(282px - 36px * 2);
+  }
 }

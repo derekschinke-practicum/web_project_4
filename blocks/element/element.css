@@ -11,3 +11,10 @@
 .element:nth-of-type(3n + 1) {
   margin-left: 0;
 }
+
+@media screen and (max-width: 919px) {
+  .element {
+    margin-left: 0;
+    padding-bottom: 20px;
+  }
+}
