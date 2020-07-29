@@ -4,19 +4,21 @@
   position: relative;
   left: 100%;
   bottom: 40.7px;
-  background-color: transparent;
-  background-image: url('../../../images/buttons/plus.svg');
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: contain;
+  background: transparent url('../../../images/buttons/plus.svg') no-repeat
+    center/contain;
   border: none;
   transform: rotate(45deg);
+}
+
+.button_type_close:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 919px) {
   .button_type_close {
     width: 19px;
     height: 19px;
-    bottom: 19px;
+    left: calc(100% - 19px);
+    bottom: 25px;
   }
 }
