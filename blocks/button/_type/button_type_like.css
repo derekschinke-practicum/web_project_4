@@ -2,10 +2,11 @@
   width: 18.13px;
   height: 20.76px;
   margin-top: 31px;
-  background-color: transparent;
+  background: transparent url('../../../images/buttons/like.svg') no-repeat
+    center/100%;
   border: none;
-  background-image: url('../../../images/buttons/like.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: 50%;
+}
+
+.button_type_like:hover {
+  opacity: 1;
 }

@@ -2,23 +2,25 @@
   width: 358px;
   padding: 0;
   margin-top: 48px;
-  margin-bottom: calc(36.51px - 40.7px);
+  margin-bottom: -4.19px;
   height: 50.15px;
   background-color: #000;
   border: none;
   border-radius: 2px;
-
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-
   color: #fff;
+}
+
+.button_type_save:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 919px) {
   .button_type_save {
-    width: calc(282px - 36px * 2);
+    width: 210px;
   }
 }
