@@ -10,7 +10,7 @@ const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 
 function togglePopup() {
-  if (popup.classList.contains('popup_opened')) {
+  if (!popup.classList.contains('popup_opened')) {
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
   }
