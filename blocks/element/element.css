@@ -1,11 +1,14 @@
-@import url('./__card/element__card.css');
 @import url('./__image/element__image.css');
 @import url('./__info/element__info.css');
 @import url('./__title/element__title.css');
 
 .element {
-  padding-bottom: 21px;
+  margin-bottom: 21px;
   margin-left: 18px;
+  width: 282px;
+  height: 361px;
+  background: #fff;
+  border-radius: 10px;
 }
 
 .element:nth-of-type(3n + 1) {
@@ -15,6 +18,5 @@
 @media screen and (max-width: 919px) {
   .element {
     margin-left: 0;
-    padding-bottom: 20px;
   }
 }

@@ -3,13 +3,14 @@
   margin-left: 24px;
   width: 24px;
   height: 24px;
-  background-color: #000;
-  background-image: url('../../../images/buttons/edit.svg');
-  background-size: 10px 10px;
-  background-repeat: no-repeat;
+  background: #000 url('../../../images/buttons/edit.svg') center/10px 10px
+    no-repeat;
   border: 1px solid #fff;
   box-sizing: border-box;
-  background-position: 50%;
+}
+
+.button_type_edit:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 919px) {

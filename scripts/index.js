@@ -1,40 +1,31 @@
-let editButton = document.querySelector('.button_type_edit');
-let closeButton = document.querySelector('.button_type_close');
+const editButton = document.querySelector('.button_type_edit');
+const closeButton = document.querySelector('.popup__close-button');
 
-let popup = document.querySelector('.popup');
+const nameProfile = document.querySelector('.profile__name');
+const jobProfile = document.querySelector('.profile__job');
 
-editButton.addEventListener('click', showPopup);
+const popup = document.querySelector('.popup');
+const formElement = document.querySelector('.popup__form');
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_job');
 
-function showPopup() {
-  popup.classList.add('popup_opened');
-  editButton.removeEventListener('click', showPopup);
-  closeButton.addEventListener('click', hidePopup);
+function togglePopup() {
+  if (!popup.classList.contains('popup_opened')) {
+    nameInput.value = nameProfile.textContent;
+    jobInput.value = jobProfile.textContent;
+  }
+  popup.classList.toggle('popup_opened');
 }
-
-function hidePopup() {
-  popup.classList.remove('popup_opened');
-  closeButton.removeEventListener('click', hidePopup);
-  editButton.addEventListener('click', showPopup);
-}
-
-let formElement = document.querySelector('.popup__form'); // Use the querySelector() method
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
-  let nameInput = document.querySelector('#popup__name'); // Use querySelector()
-  let jobInput = document.querySelector('#popup__job'); // Use querySelector()
+  nameProfile.textContent = nameInput.value;
+  jobProfile.textContent = jobInput.value;
 
-  nameInputValue = nameInput.value;
-  jobInputValue = jobInput.value;
-
-  let nameProfile = document.querySelector('.profile__name');
-  let jobProfile = document.querySelector('.profile__job');
-
-  nameProfile.textContent = nameInputValue;
-  jobProfile.textContent = jobInputValue;
-
-  hidePopup();
+  togglePopup();
 }
 
+editButton.addEventListener('click', togglePopup);
 formElement.addEventListener('submit', formSubmitHandler);
+closeButton.addEventListener('click', togglePopup);
