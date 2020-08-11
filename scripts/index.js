@@ -1,34 +1,54 @@
+// Wrappers
+const addPopup = document.querySelector('.popup_type_add');
+const editPopup = document.querySelector('.popup_type_edit');
+
+// openButtons
 const editButton = document.querySelector('.button_type_edit');
-const closeButton = document.querySelector('.popup__close-button');
+const addButton = document.querySelector('.button_type_add');
+
+// closeButtons
+const closeAddPopupButton = addPopup.querySelector('.popup__close-button');
+const closeEditPopupButton = editPopup.querySelector('.popup__close-button');
 
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
 
-const popup = document.querySelector('.popup');
-const formElement = document.querySelector('.popup__form');
+const editForm = document.querySelector('.popup__form');
+
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 
-function togglePopup() {
-  if (!popup.classList.contains('popup_opened')) {
-    nameInput.value = nameProfile.textContent;
-    jobInput.value = jobProfile.textContent;
-  }
+function togglePopup(popup) {
   popup.classList.toggle('popup_opened');
 }
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-
-  togglePopup();
+  togglePopup(editPopup);
 }
 
-editButton.addEventListener('click', togglePopup);
-formElement.addEventListener('submit', formSubmitHandler);
-closeButton.addEventListener('click', togglePopup);
+editForm.addEventListener('submit', formSubmitHandler);
+editButton.addEventListener('click', () => {
+  if (!editPopup.classList.contains('popup_opened')) {
+    nameInput.value = nameProfile.textContent;
+    jobInput.value = jobProfile.textContent;
+  }
+  togglePopup(editPopup);
+});
+closeEditPopupButton.addEventListener('click', () => {
+  togglePopup(editPopup);
+});
+
+addButton.addEventListener('click', () => {
+  togglePopup(addPopup);
+  addPopup.classList.add('popup_opened');
+});
+
+closeAddPopupButton.addEventListener('click', () => {
+  togglePopup(addPopup);
+});
 
 const initialCards = [
   {
