@@ -2,6 +2,7 @@
 @import url('./_type/button_type_add.css');
 @import url('./_type/button_type_like.css');
 @import url('./_type/button_type_close.css');
+@import url('./_type/_type/button_type_close_type_image.css');
 @import url('./_type/button_type_save.css');
 
 .button {
