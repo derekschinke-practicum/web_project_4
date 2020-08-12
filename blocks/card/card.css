@@ -1,8 +1,8 @@
-@import url('./__image/element__image.css');
-@import url('./__info/element__info.css');
-@import url('./__title/element__title.css');
+@import url('./__image/card__image.css');
+@import url('./__info/card__info.css');
+@import url('./__title/card__title.css');
 
-.element {
+.card {
   margin-bottom: 21px;
   margin-left: 18px;
   width: 282px;
@@ -11,12 +11,12 @@
   border-radius: 10px;
 }
 
-.element:nth-of-type(3n + 1) {
+.card:nth-of-type(3n + 1) {
   margin-left: 0;
 }
 
 @media screen and (max-width: 919px) {
-  .element {
+  .card {
     margin-left: 0;
   }
 }
