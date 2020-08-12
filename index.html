@@ -54,7 +54,11 @@
             class="button button_type_close"
           ></button>
           <h3 class="popup__title">Edit profile</h3>
-          <form method="POST" name="popup_type_edit" class="popup__form">
+          <form
+            method="POST"
+            name="popup_type_edit"
+            class="popup__form popup__form_type_edit"
+          >
             <input
               type="text"
               class="popup__input popup__input_type_name"
@@ -77,8 +81,12 @@
             aria-label="Close"
             class="button button_type_close"
           ></button>
-          <h3 class="popup__title">New Place</h3>
-          <form method="POST" name="popup_type_add" class="popup__form">
+          <h3 class="popup__title">New place</h3>
+          <form
+            method="POST"
+            name="popup_type_add"
+            class="popup__form popup__form_type_add"
+          >
             <input
               type="text"
               class="popup__input popup__input_type_title"
@@ -87,7 +95,7 @@
             <input
               type="url"
               class="popup__input popup__input_type_image-url"
-              placeholder="Image URL"
+              placeholder="Image link"
             />
             <input type="submit" value="Save" class="button button_type_save" />
           </form>
