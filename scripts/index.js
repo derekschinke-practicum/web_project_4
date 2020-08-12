@@ -67,6 +67,10 @@ function formSubmitHandler(evt) {
   togglePopup(editPopup);
 }
 
+function toggleLikeState(cardLikeButton) {
+  cardLikeButton.classList.toggle('button_type_like_liked');
+}
+
 function handleCardDeleteClick(evt) {
   evt.target.closest('.card').remove();
 }
@@ -107,7 +111,7 @@ initialCards.forEach((data) => {
   cardImage.style.backgroundImage = `url(${data.link})`;
 
   cardLikeButton.addEventListener('click', () => {
-    // changeLikeState()
+    toggleLikeState(cardLikeButton);
   });
 
   cardDeleteButton.addEventListener('click', (evt) => {
