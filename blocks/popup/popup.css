@@ -16,5 +16,10 @@
   height: 100%;
   overflow: auto;
   background: rgba(0, 0, 0, 0.5);
-  display: none;
+  display: grid;
+  visibility: hidden;
+  place-items: center;
+  opacity: 0;
+  transition: visibility 0s ease 0.5s, opacity 0.5s ease;
+  transition-delay: 0.5s, 0s;
 }
