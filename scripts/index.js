@@ -67,6 +67,10 @@ function formSubmitHandler(evt) {
   togglePopup(editPopup);
 }
 
+function handleCardDeleteClick(evt) {
+  evt.target.closest('.card').remove();
+}
+
 editForm.addEventListener('submit', formSubmitHandler);
 openEditPopupButton.addEventListener('click', () => {
   if (!editPopup.classList.contains('popup_opened')) {
@@ -106,8 +110,8 @@ initialCards.forEach((data) => {
     // changeLikeState()
   });
 
-  cardDeleteButton.addEventListener('click', () => {
-    // handleCardDeleteClick()
+  cardDeleteButton.addEventListener('click', (evt) => {
+    handleCardDeleteClick(evt);
   });
 
   cardImage.addEventListener('click', () => {
@@ -121,5 +125,5 @@ initialCards.forEach((data) => {
     togglePopup(imagePopup);
   });
 
-  list.prepend(cardElement);
+  list.append(cardElement);
 });
