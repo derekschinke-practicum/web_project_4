@@ -27,7 +27,6 @@ const initialCards = [
     link: 'https://code.s3.yandex.net/web-code/lago.jpg',
   },
 ];
-const initialCardsReverse = Object.assign([], initialCards).reverse();
 
 // cardTemplate
 const cardTemplate = document
@@ -80,9 +79,11 @@ function editFormSubmitHandler(evt) {
   jobProfile.textContent = jobInput.value;
   togglePopup(editPopup);
 }
+
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
-  addNewCard(titleInput.value, imageURLInput.value);
+  const cardElement = addNewCard(titleInput.value, imageURLInput.value);
+  list.prepend(cardElement);
   togglePopup(addPopup);
 }
 
@@ -113,11 +114,13 @@ function addNewCard(title, link) {
     togglePopup(imagePopup);
   });
 
-  list.prepend(cardElement);
+  return cardElement;
 }
+
 function toggleLikeState(cardLikeButton) {
   cardLikeButton.classList.toggle('button_type_like_liked');
 }
+
 function handleCardDeleteClick(evt) {
   evt.target.parentNode.remove();
 }
@@ -126,23 +129,24 @@ function handleCardDeleteClick(evt) {
 
 // editForm
 editForm.addEventListener('submit', editFormSubmitHandler);
+
 openEditPopupButton.addEventListener('click', () => {
-  if (!editPopup.classList.contains('popup_opened')) {
-    nameInput.value = nameProfile.textContent;
-    jobInput.value = jobProfile.textContent;
-  }
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;
   togglePopup(editPopup);
 });
+
 closeEditPopupButton.addEventListener('click', () => {
   togglePopup(editPopup);
 });
 
 // addForm
 addForm.addEventListener('submit', addFormSubmitHandler);
+
 openAddPopupButton.addEventListener('click', () => {
   togglePopup(addPopup);
-  addPopup.classList.add('popup_opened');
 });
+
 closeAddPopupButton.addEventListener('click', () => {
   togglePopup(addPopup);
 });
@@ -153,6 +157,7 @@ closeImagePopupButton.addEventListener('click', () => {
 });
 
 // cardGeneration
-initialCardsReverse.forEach((data) => {
-  addNewCard(data.name, data.link);
+initialCards.forEach((data) => {
+  const cardElement = addNewCard(data.name, data.link);
+  list.append(cardElement);
 });
