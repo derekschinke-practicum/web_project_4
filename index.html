@@ -59,17 +59,40 @@
             name="popup_type_edit"
             class="popup__form popup__form_type_edit"
           >
+            <label>
+              <input
+                type="text"
+                name="name"
+                id="profile-name"
+                class="popup__input popup__input_type_name"
+                placeholder="Name"
+                required
+                minlength="2"
+                maxlength="40"
+                id
+              />
+              <span class="popup__error" id="profile-name-error"></span>
+            </label>
+
+            <label>
+              <input
+                type="text"
+                name="job"
+                id="profile-job"
+                class="popup__input popup__input_type_job"
+                placeholder="About me"
+                required
+                minlength="2"
+                maxlength="200"
+              />
+              <span class="popup__error" id="profile-job-error"></span>
+            </label>
+
             <input
-              type="text"
-              class="popup__input popup__input_type_name"
-              placeholder="Name"
+              type="submit"
+              value="Save"
+              class="button button_type_save popup__button"
             />
-            <input
-              type="text"
-              class="popup__input popup__input_type_job"
-              placeholder="About me"
-            />
-            <input type="submit" value="Save" class="button button_type_save" />
           </form>
         </div>
       </div>
@@ -87,17 +110,37 @@
             name="popup_type_add"
             class="popup__form popup__form_type_add"
           >
+            <label>
+              <input
+                type="text"
+                name="title"
+                id="card-title"
+                class="popup__input popup__input_type_title"
+                placeholder="Title"
+                required
+                minlength="2"
+                maxlength="30"
+              />
+              <span class="popup__error" id="card-title-error"></span>
+            </label>
+
+            <label>
+              <input
+                type="url"
+                name="url"
+                id="card-url"
+                class="popup__input popup__input_type_image-url"
+                placeholder="Image link"
+                required
+              />
+              <span class="popup__error" id="card-url-error"></span>
+            </label>
+
             <input
-              type="text"
-              class="popup__input popup__input_type_title"
-              placeholder="Title"
+              type="submit"
+              value="Save"
+              class="button button_type_save popup__button"
             />
-            <input
-              type="url"
-              class="popup__input popup__input_type_image-url"
-              placeholder="Image link"
-            />
-            <input type="submit" value="Save" class="button button_type_save" />
           </form>
         </div>
       </div>
@@ -132,6 +175,7 @@
       </li>
     </template>
 
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
