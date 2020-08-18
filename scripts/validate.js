@@ -29,14 +29,14 @@ function checkInputValidity(form, input, rest) {
 }
 
 function toggleButton(inputs, button, form, { inactiveButtonClass, ...rest }) {
-  const isValid = inputs.some((input) => {
+  const isInvalid = inputs.some((input) => {
     return !input.validity.valid;
   });
 
-  if (isValid) {
-    button.classList.remove(inactiveButtonClass);
-  } else {
+  if (isInvalid) {
     button.classList.add(inactiveButtonClass);
+  } else {
+    button.classList.remove(inactiveButtonClass);
   }
 }
 

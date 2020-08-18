@@ -61,6 +61,7 @@ const jobInput = document.querySelector('.popup__input_type_job');
 const addForm = document.querySelector('.popup__form_type_add');
 const titleInput = document.querySelector('.popup__input_type_title');
 const imageURLInput = document.querySelector('.popup__input_type_image-url');
+const addSaveButton = addForm.querySelector('.popup__button');
 
 // imagePopup
 const popupImage = imagePopup.querySelector('.popup__image');
@@ -82,13 +83,13 @@ function editFormSubmitHandler(evt) {
 
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
-  const cardElement = addNewCard(titleInput.value, imageURLInput.value);
+  const cardElement = createNewCard(titleInput.value, imageURLInput.value);
   list.prepend(cardElement);
   togglePopup(addPopup);
 }
 
 // cardGenerators
-function addNewCard(title, link) {
+function createNewCard(title, link) {
   const cardElement = cardTemplate.cloneNode(true);
 
   const cardTitle = cardElement.querySelector('.card__title');
@@ -149,6 +150,7 @@ openAddPopupButton.addEventListener('click', () => {
 
 closeAddPopupButton.addEventListener('click', () => {
   togglePopup(addPopup);
+  addSaveButton.classList.remove('popup__button_disabled');
 });
 
 // imagePopup
@@ -158,6 +160,6 @@ closeImagePopupButton.addEventListener('click', () => {
 
 // cardGeneration
 initialCards.forEach((data) => {
-  const cardElement = addNewCard(data.name, data.link);
+  const cardElement = createNewCard(data.name, data.link);
   list.append(cardElement);
 });
