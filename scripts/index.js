@@ -113,6 +113,11 @@ function createNewCard(title, link) {
     popupImage.alt = title;
     popupCaption.textContent = title;
     togglePopup(imagePopup);
+    document.addEventListener(
+      'keydown',
+      escapeKeyHandler.bind(event, imagePopup)
+    );
+    window.addEventListener('click', popupClickHandler.bind(event, imagePopup));
   });
 
   return cardElement;
@@ -126,6 +131,23 @@ function handleCardDeleteClick(evt) {
   evt.target.parentNode.remove();
 }
 
+function escapeKeyHandler(popup) {
+  if (event.key === 'Escape') {
+    togglePopup(popup);
+    document.removeEventListener('keydown', escapeKeyHandler);
+    window.removeEventListener('click', popupClickHandler);
+  }
+}
+
+function popupClickHandler(popup) {
+  const openPopup = document.querySelector('.popup_opened');
+  if (event.target === openPopup) {
+    togglePopup(popup);
+    document.removeEventListener('keydown', escapeKeyHandler);
+    window.removeEventListener('click', popupClickHandler);
+  }
+}
+
 // eventListeners
 
 // editForm
@@ -135,10 +157,14 @@ openEditPopupButton.addEventListener('click', () => {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
   togglePopup(editPopup);
+  document.addEventListener('keydown', escapeKeyHandler.bind(event, editPopup));
+  window.addEventListener('click', popupClickHandler.bind(event, editPopup));
 });
 
 closeEditPopupButton.addEventListener('click', () => {
   togglePopup(editPopup);
+  document.removeEventListener('keydown', escapeKeyHandler);
+  window.removeEventListener('click', popupClickHandler);
 });
 
 // addForm
@@ -146,16 +172,21 @@ addForm.addEventListener('submit', addFormSubmitHandler);
 
 openAddPopupButton.addEventListener('click', () => {
   togglePopup(addPopup);
+  document.addEventListener('keydown', escapeKeyHandler.bind(event, addPopup));
+  window.addEventListener('click', popupClickHandler.bind(event, addPopup));
 });
 
 closeAddPopupButton.addEventListener('click', () => {
   togglePopup(addPopup);
-  addSaveButton.classList.remove('popup__button_disabled');
+  document.removeEventListener('keydown', escapeKeyHandler);
+  window.removeEventListener('click', popupClickHandler);
 });
 
 // imagePopup
 closeImagePopupButton.addEventListener('click', () => {
   togglePopup(imagePopup);
+  document.removeEventListener('keydown', escapeKeyHandler);
+  window.removeEventListener('click', popupClickHandler);
 });
 
 // cardGeneration
