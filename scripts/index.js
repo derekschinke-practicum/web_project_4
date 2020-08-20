@@ -61,6 +61,7 @@ const jobInput = document.querySelector('.popup__input_type_job');
 const addForm = document.querySelector('.popup__form_type_add');
 const titleInput = document.querySelector('.popup__input_type_title');
 const imageURLInput = document.querySelector('.popup__input_type_image-url');
+const addSaveButton = addForm.querySelector('.popup__button');
 
 // imagePopup
 const popupImage = imagePopup.querySelector('.popup__image');
@@ -82,13 +83,40 @@ function editFormSubmitHandler(evt) {
 
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
-  const cardElement = addNewCard(titleInput.value, imageURLInput.value);
+  const cardElement = createNewCard(titleInput.value, imageURLInput.value);
   list.prepend(cardElement);
   togglePopup(addPopup);
 }
 
+// popupCloseHandlers
+function escapeKeyHandler() {
+  const openPopup = document.querySelector('.popup_opened');
+  if (event.key === 'Escape') {
+    togglePopup(openPopup);
+    document.removeEventListener('keydown', escapeKeyHandler);
+    window.removeEventListener('click', windowClickHandler);
+  }
+}
+
+function windowClickHandler() {
+  const openPopup = document.querySelector('.popup_opened');
+  if (event.target === openPopup) {
+    togglePopup(openPopup);
+    document.removeEventListener('keydown', escapeKeyHandler);
+    window.removeEventListener('click', windowClickHandler);
+  }
+}
+
 // cardGenerators
-function addNewCard(title, link) {
+function toggleLikeState(cardLikeButton) {
+  cardLikeButton.classList.toggle('button_type_like_liked');
+}
+
+function handleCardDeleteClick(evt) {
+  evt.target.parentNode.remove();
+}
+
+function createNewCard(title, link) {
   const cardElement = cardTemplate.cloneNode(true);
 
   const cardTitle = cardElement.querySelector('.card__title');
@@ -97,7 +125,7 @@ function addNewCard(title, link) {
   const cardDeleteButton = cardElement.querySelector('.button_type_delete');
 
   cardTitle.textContent = title;
-  cardImage.style.backgroundImage = `url(${link})`;
+  cardImage.style.backgroundImage = `url("${link}")`;
 
   cardLikeButton.addEventListener('click', () => {
     toggleLikeState(cardLikeButton);
@@ -112,17 +140,11 @@ function addNewCard(title, link) {
     popupImage.alt = title;
     popupCaption.textContent = title;
     togglePopup(imagePopup);
+    document.addEventListener('keydown', escapeKeyHandler);
+    window.addEventListener('click', windowClickHandler);
   });
 
   return cardElement;
-}
-
-function toggleLikeState(cardLikeButton) {
-  cardLikeButton.classList.toggle('button_type_like_liked');
-}
-
-function handleCardDeleteClick(evt) {
-  evt.target.parentNode.remove();
 }
 
 // eventListeners
@@ -134,10 +156,14 @@ openEditPopupButton.addEventListener('click', () => {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
   togglePopup(editPopup);
+  document.addEventListener('keydown', escapeKeyHandler);
+  window.addEventListener('click', windowClickHandler);
 });
 
 closeEditPopupButton.addEventListener('click', () => {
   togglePopup(editPopup);
+  document.removeEventListener('keydown', escapeKeyHandler);
+  window.removeEventListener('click', windowClickHandler);
 });
 
 // addForm
@@ -145,19 +171,25 @@ addForm.addEventListener('submit', addFormSubmitHandler);
 
 openAddPopupButton.addEventListener('click', () => {
   togglePopup(addPopup);
+  document.addEventListener('keydown', escapeKeyHandler);
+  window.addEventListener('click', windowClickHandler);
 });
 
 closeAddPopupButton.addEventListener('click', () => {
   togglePopup(addPopup);
+  document.removeEventListener('keydown', escapeKeyHandler);
+  window.removeEventListener('click', windowClickHandler);
 });
 
 // imagePopup
 closeImagePopupButton.addEventListener('click', () => {
   togglePopup(imagePopup);
+  document.removeEventListener('keydown', escapeKeyHandler);
+  window.removeEventListener('click', windowClickHandler);
 });
 
 // cardGeneration
 initialCards.forEach((data) => {
-  const cardElement = addNewCard(data.name, data.link);
+  const cardElement = createNewCard(data.name, data.link);
   list.append(cardElement);
 });
