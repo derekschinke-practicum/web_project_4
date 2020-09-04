@@ -1,4 +1,18 @@
+// moduleImports
+import Card from './Card.js';
+import FormValidation from './FormValidation.js';
+
 // constants
+
+// formValidationSettings
+const formValidationSettings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+};
 
 // cards
 const initialCards = [
@@ -65,6 +79,19 @@ const imageURLInput = document.querySelector('.popup__input_type_image-url');
 // imagePopup
 const popupImage = imagePopup.querySelector('.popup__image');
 const popupCaption = imagePopup.querySelector('.popup__caption');
+
+// formValidation
+const addPopupForm = addPopup.querySelector('.popup__form');
+const editPopupForm = editPopup.querySelector('.popup__form');
+
+const editFormValidator = new FormValidation(
+  formValidationSettings,
+  addPopupForm
+);
+const addFormValidator = new FormValidation(
+  formValidationSettings,
+  editPopupForm
+);
 
 // functions
 
@@ -194,3 +221,7 @@ initialCards.forEach((data) => {
   const cardElement = createNewCard(data.name, data.link);
   list.append(cardElement);
 });
+
+// formValidation
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
