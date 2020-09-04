@@ -1,12 +1,11 @@
 import { imagePopup, togglePopup } from './utils.js';
 
 export default class Card {
-  constructor(data, cardTemplateSelector) {
+  constructor(data, cardTemplate) {
     this._name = data.name;
     this._link = data.link;
-    this._cardTemplate = document
-      .querySelector(cardTemplateSelector)
-      .content.querySelector('.card');
+
+    this._cardTemplate = cardTemplate;
   }
 
   _handleLikeIcon() {
@@ -31,11 +30,15 @@ export default class Card {
     this._likeButton = this._card.querySelector('.button_type_like');
     const deleteButton = this._card.querySelector('.button_type_delete');
 
-    this._likeButton.addEventListener('click', this._handleLikeIcon);
+    this._likeButton.addEventListener('click', () => {
+      this._handleLikeIcon();
+    });
     deleteButton.addEventListener('click', (evt) => {
       this._handleDeleteCard(evt);
     });
-    this._cardImage.addEventListener('click', this._handlePreviewPicture);
+    this._cardImage.addEventListener('click', () => {
+      this._handlePreviewPicture();
+    });
   }
 
   getCardElement() {
@@ -45,7 +48,7 @@ export default class Card {
     this._cardImage = this._card.querySelector('.card__image');
 
     cardTitle.textContent = this._name;
-    cardImage.style.backgroundImage = `url("${link}")`;
+    this._cardImage.style.backgroundImage = `url("${this._link}")`;
 
     this._addEventListeners();
 
