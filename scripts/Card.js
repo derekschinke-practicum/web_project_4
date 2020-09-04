@@ -12,8 +12,8 @@ export default class Card {
     this._likeButton.classList.toggle('button_type_like_liked');
   }
 
-  _handleDeleteCard(evt) {
-    evt.target.parentNode.remove();
+  _handleDeleteCard() {
+    this._card.remove();
   }
 
   _handlePreviewPicture() {
@@ -33,8 +33,8 @@ export default class Card {
     this._likeButton.addEventListener('click', () => {
       this._handleLikeIcon();
     });
-    deleteButton.addEventListener('click', (evt) => {
-      this._handleDeleteCard(evt);
+    deleteButton.addEventListener('click', () => {
+      this._handleDeleteCard();
     });
     this._cardImage.addEventListener('click', () => {
       this._handlePreviewPicture();
