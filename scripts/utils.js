@@ -4,16 +4,16 @@ export const imagePopup = document.querySelector('.popup_type_image');
 // functions
 
 // togglePopup
-function escapeKeyPopupCloseHandler() {
+function escapeKeyPopupCloseHandler(evt) {
   const openPopup = document.querySelector('.popup_opened');
-  if (event.key === 'Escape') {
+  if (evt.key === 'Escape') {
     togglePopup(openPopup);
   }
 }
 
-function windowClickPopupCloseHandler() {
+function windowClickPopupCloseHandler(evt) {
   const openPopup = document.querySelector('.popup_opened');
-  if (event.target === openPopup) {
+  if (evt.target === openPopup) {
     togglePopup(openPopup);
   }
 }
