@@ -6,6 +6,7 @@ export default class Card {
     this._link = data.link;
 
     this._cardTemplate = cardTemplate;
+    // this._handleCardClick = handleCardClick;
   }
 
   _handleLikeIcon() {
@@ -38,6 +39,7 @@ export default class Card {
     });
     this._cardImage.addEventListener('click', () => {
       this._handlePreviewPicture();
+      // this._handleCardClick();
     });
   }
 
