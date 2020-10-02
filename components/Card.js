@@ -1,12 +1,9 @@
-import { imagePopup, togglePopup } from './utils.js';
-
 export default class Card {
-  constructor(data, cardTemplate) {
+  constructor(data, cardTemplate, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
-
     this._cardTemplate = cardTemplate;
-    // this._handleCardClick = handleCardClick;
+    this._handleCardClick = handleCardClick;
   }
 
   _handleLikeIcon() {
@@ -15,16 +12,6 @@ export default class Card {
 
   _handleDeleteCard() {
     this._card.remove();
-  }
-
-  _handlePreviewPicture() {
-    const popupImage = imagePopup.querySelector('.popup__image');
-    const popupCaption = imagePopup.querySelector('.popup__caption');
-
-    popupImage.src = this._link;
-    popupImage.alt = this._name;
-    popupCaption.textContent = this._name;
-    togglePopup(imagePopup);
   }
 
   _addEventListeners() {
@@ -38,8 +25,7 @@ export default class Card {
       this._handleDeleteCard();
     });
     this._cardImage.addEventListener('click', () => {
-      this._handlePreviewPicture();
-      // this._handleCardClick();
+      this._handleCardClick({ name: this._name, link: this._link });
     });
   }
 
