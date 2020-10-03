@@ -1,4 +1,7 @@
 // moduleImports
+
+import './pages/index.css';
+
 import {
   nameSelector,
   jobSelector,
@@ -24,6 +27,7 @@ import PopupWithImage from './components/PopupWithImage.js';
 import FormValidation from './components/FormValidation.js';
 
 // constants
+
 const profileInfo = new UserInfo({ nameSelector, jobSelector });
 
 const cardsList = new Section(

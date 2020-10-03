@@ -8,12 +8,14 @@ This project is part of the Basic JavaScript and Working with the Browser sprint
 
 ### Technologies Used
 
-HTML & CSS technologies it demonstrates are:
+HTML, CSS, and JS technologies it demonstrates are:
 
 - flexbox
 - <abbr title="Block, Element, Modifier">BEM</abbr> methodology
 - media queries for responsiveness
 - using <abbr title="Document Object Model">DOM</abbr> in JavaScript to edit page content
+- <abbr title="Object Oriented Programming">OOP</abbr>
+- Webpack
 
 The website can be accessed [here](https://derekschinke-practicum.github.io/web_project_4/).
 

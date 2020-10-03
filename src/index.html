@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around The U.S.</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
 
   <body class="page">
@@ -20,7 +19,9 @@
               role="img"
               aria-label="Jacques Cousteau"
               class="profile__avatar"
-              style="background-image: url('./images/avatar.jpg')"
+              style="
+                background-image: url('https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg');
+              "
             ></div>
             <div class="profile__info">
               <div class="profile__text">
@@ -152,7 +153,7 @@
             class="button button_type_close button_type_close_type_image"
           ></button>
           <figure class="popup__figure">
-            <img src="" alt="" class="popup__image" />
+            <img class="popup__image" />
             <figcaption class="popup__caption"></figcaption>
           </figure>
         </div>
@@ -173,7 +174,5 @@
         </div>
       </li>
     </template>
-
-    <script type="module" src="./index.js"></script>
   </body>
 </html>
