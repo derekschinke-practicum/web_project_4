@@ -4,5 +4,14 @@ export default class Api {
     this.headers = options.headers;
   }
 
-  getInitialCards() {}
+  getInitialCards() {
+    return fetch(this.baseUrl + '/cards', {
+      headers: this.headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
 }
