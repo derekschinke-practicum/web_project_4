@@ -5,7 +5,6 @@ import 'normalize.css';
 import './pages/index.css';
 
 // scriptImports
-
 import {
   nameSelector,
   jobSelector,
