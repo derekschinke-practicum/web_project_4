@@ -25,8 +25,17 @@ import Card from './components/Card.js';
 import PopupWithForm from './components/PopupWithForm.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import FormValidation from './components/FormValidation.js';
+import Api from './components/Api.js';
 
 // constants
+
+const api = new Api({
+  baseUrl: 'https://around.nomoreparties.co/v1/group-5',
+  headers: {
+    authorization: '8cd049ee-8ebb-4e3d-8437-51e87560cee5',
+    'Content-Type': 'application/json',
+  },
+});
 
 const profileInfo = new UserInfo({ nameSelector, jobSelector });
 
