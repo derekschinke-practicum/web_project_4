@@ -4,14 +4,23 @@ export default class Api {
     this.headers = options.headers;
   }
 
-  getInitialCards() {
-    return fetch(this.baseUrl + '/cards', {
+  async loadInitialCards() {
+    const res = await fetch(this.baseUrl + '/cards', {
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
     });
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
+  async loadUserInfo() {
+    const res = await fetch(this.baseUrl + '/users/me', {
+      headers: this.headers,
+    });
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
   }
 }

@@ -1,13 +1,19 @@
 // moduleImports
 
+// polyfill
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 // cssImports
 import 'normalize.css';
+import './vendor/fonts/fonts.css';
 import './pages/index.css';
 
 // scriptImports
 import {
   nameSelector,
   jobSelector,
+  avatarSelector,
   initialCards,
   placesList,
   cardTemplate,
@@ -40,7 +46,17 @@ const api = new Api({
   },
 });
 
-const profileInfo = new UserInfo({ nameSelector, jobSelector });
+const profileInfo = new UserInfo({ nameSelector, jobSelector, avatarSelector });
+
+api
+  .loadUserInfo()
+  .then((data) => {
+    profileInfo.setUserInfo({ name: data.name, job: data.about });
+    profileInfo.setUserAvatar(data.avatar);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const cardsList = new Section(
   {
