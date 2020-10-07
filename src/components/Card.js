@@ -7,7 +7,7 @@ export default class Card {
   }
 
   _handleLikeIcon() {
-    this._likeButton.classList.toggle('button_type_like_liked');
+    this._likeButton.classList.toggle('button_type_liked');
   }
 
   _handleDeleteCard() {
