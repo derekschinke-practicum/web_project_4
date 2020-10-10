@@ -1,4 +1,4 @@
-.button_type_save {
+.button_type_submit {
   width: 358px;
   padding: 0;
   margin-top: 48px;
@@ -14,12 +14,12 @@
   color: #fff;
 }
 
-.button_type_save:hover {
+.button_type_submit:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 919px) {
-  .button_type_save {
+  .button_type_submit {
     font-size: 14px;
     line-height: 17px;
     margin-top: 36px;

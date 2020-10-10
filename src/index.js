@@ -23,6 +23,8 @@ import {
   editProfilePopupSelector,
   nameInput,
   jobInput,
+  editAvatarPopupSelector,
+  editAvatarButton,
   addCardButton,
   addCardPopupSelector,
   imagePopupSelector,
@@ -48,16 +50,6 @@ const api = new Api({
 
 const profileInfo = new UserInfo({ nameSelector, jobSelector, avatarSelector });
 
-api
-  .loadUserInfo()
-  .then((data) => {
-    profileInfo.setUserInfo({ name: data.name, job: data.about });
-    profileInfo.setUserAvatar(data.avatar);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
 const cardsList = new Section(
   {
     items: initialCards,
@@ -72,6 +64,12 @@ const cardsList = new Section(
 const editProfilePopup = new PopupWithForm(
   editProfilePopupSelector,
   editProfileSubmitHandler,
+  formValidationSettings.formSelector
+);
+
+const editAvatarPopup = new PopupWithForm(
+  editAvatarPopupSelector,
+  editAvatarSubmitHandler,
   formValidationSettings.formSelector
 );
 
@@ -94,8 +92,38 @@ function makeNewCard(data) {
   return card.getCardElement();
 }
 
-function editProfileSubmitHandler({ name, job }) {
-  profileInfo.setUserInfo({ name, job });
+function editProfileSubmitHandler(data) {
+  api
+    .patchUserInfo(data)
+    .then(() => {
+      profileInfo.setUserInfo(data);
+    })
+    .then(() => {
+      editProfilePopup.close();
+    })
+    .then(() => {
+      editProfilePopup.showPatchStatus(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function editAvatarSubmitHandler(data) {
+  api
+    .patchAvatarImage(data.url)
+    .then(() => {
+      profileInfo.setUserAvatar(data.url);
+    })
+    .then(() => {
+      editAvatarPopup.close();
+    })
+    .then(() => {
+      editAvatarPopup.showPatchStatus(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 function addCardSubmitHandler({ title, url }) {
@@ -104,6 +132,16 @@ function addCardSubmitHandler({ title, url }) {
 }
 
 // calls
+
+api
+  .getUserInfo()
+  .then((data) => {
+    profileInfo.setUserInfo({ name: data.name, job: data.about });
+    profileInfo.setUserAvatar(data.avatar);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 cardsList.renderItems();
 
@@ -114,6 +152,11 @@ editProfileButton.addEventListener('click', () => {
   editProfilePopup.open();
 });
 editProfilePopup.setEventListeners();
+
+editAvatarButton.addEventListener('click', () => {
+  editAvatarPopup.open();
+});
+editAvatarPopup.setEventListeners();
 
 addCardButton.addEventListener('click', () => addCardPopup.open());
 addCardPopup.setEventListeners();
