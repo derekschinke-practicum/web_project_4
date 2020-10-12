@@ -4,6 +4,10 @@ export default class Api {
     this.headers = options.headers;
   }
 
+  getInitialCardsAndUserInfo() {
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+  }
+
   async getUserInfo() {
     const res = await fetch(this.baseUrl + '/users/me', {
       headers: this.headers,
@@ -24,6 +28,18 @@ export default class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
+  async updateCardLikes(cardId, isLiked) {
+    const method = isLiked ? 'DELETE' : 'PUT';
+    const res = await fetch(this.baseUrl + `/cards/likes/${cardId}`, {
+      headers: this.headers,
+      method: method,
+    });
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
   async patchAvatarImage(url) {
     const res = await fetch(this.baseUrl + '/users/me/avatar', {
       headers: this.headers,
@@ -36,11 +52,11 @@ export default class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  async patchUserInfo({ name, job }) {
+  async patchUserInfo(info) {
     const res = await fetch(this.baseUrl + '/users/me', {
       headers: this.headers,
       method: 'PATCH',
-      body: JSON.stringify({ name: name, about: job }),
+      body: JSON.stringify({ name: info.name, about: info.job }),
     });
     if (res.ok) {
       return res.json();
