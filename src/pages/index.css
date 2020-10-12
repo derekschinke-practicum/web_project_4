@@ -1,5 +1,6 @@
 @import url('../blocks/page/page.css');
 @import url('../blocks/button/button.css');
+@import url('../blocks/button/_type/_hidden/button_type_delete_hidden.css');
 @import url('../blocks/header/header.css');
 @import url('../blocks/main/main.css');
 @import url('../blocks/profile/profile.css');

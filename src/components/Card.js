@@ -67,6 +67,11 @@ export default class Card {
       this._likeButton.classList.toggle('button_type_liked');
     }
 
+    this._deleteButton = this._cardElement.querySelector('.button_type_delete');
+    if (!(this._ownerId === this._userId)) {
+      this._deleteButton.classList.add('button_type_delete_hidden');
+    }
+
     return this._cardElement;
   }
 }

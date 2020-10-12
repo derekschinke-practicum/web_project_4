@@ -24,6 +24,7 @@ import {
   jobInput,
   editAvatarPopupSelector,
   editAvatarButton,
+  deleteCardPopupSelector,
   addCardButton,
   addCardPopupSelector,
   imagePopupSelector,
@@ -36,6 +37,7 @@ import Card from './components/Card.js';
 import PopupWithForm from './components/PopupWithForm.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import FormValidation from './components/FormValidation.js';
+import Popup from './components/Popup';
 
 // constants
 
@@ -60,6 +62,12 @@ const editAvatarPopup = new PopupWithForm(
   editAvatarSubmitHandler,
   formValidationSettings.formSelector
 );
+
+// const deleteCardPopup = new PopupWithForm(
+//   deleteCardPopupSelector,
+//   deleteCardSubmitHandler,
+//   formValidationSettings.formSelector
+// );
 
 const addCardPopup = new PopupWithForm(
   addCardPopupSelector,
@@ -138,6 +146,18 @@ function handleLikeClick(card, cardId, isLiked) {
       console.log(err);
     });
 }
+
+// function deleteCardSubmitHandler(cardId, card) {
+//   api
+//     .deleteCard(cardId)
+//     .then(() => {
+//       deleteCardPopup.close();
+//       card.remove()
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }
 
 function addCardSubmitHandler({ title, url }) {
   const card = makeNewCard({ name: title, link: url });

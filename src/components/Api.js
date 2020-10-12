@@ -30,9 +30,32 @@ export default class Api {
 
   async updateCardLikes(cardId, isLiked) {
     const method = isLiked ? 'DELETE' : 'PUT';
-    const res = await fetch(this.baseUrl + `/cards/likes/${cardId}`, {
+    const res = await fetch(this.baseUrl + '/cards/likes/' + cardId, {
       headers: this.headers,
       method: method,
+    });
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
+  async deleteCard(cardId) {
+    const res = await fetch(this.baseUrl + '/cards/' + cardId, {
+      headers: this.headers,
+      method: 'DELETE',
+    });
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
+  async postCard() {
+    const res = await fetch(this.baseUrl + '/cards', {
+      headers: this.headers,
+      method: 'POST',
+      body: JSON.stringify(),
     });
     if (res.ok) {
       return res.json();
