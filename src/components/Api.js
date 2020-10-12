@@ -51,11 +51,11 @@ export default class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  async postCard() {
+  async postCard({ title, url }) {
     const res = await fetch(this.baseUrl + '/cards', {
       headers: this.headers,
       method: 'POST',
-      body: JSON.stringify(),
+      body: JSON.stringify({ name: title, link: url }),
     });
     if (res.ok) {
       return res.json();

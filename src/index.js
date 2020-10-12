@@ -159,9 +159,15 @@ function handleLikeClick(card, cardId, isLiked) {
 //     });
 // }
 
-function addCardSubmitHandler({ title, url }) {
-  const card = makeNewCard({ name: title, link: url });
-  cardsList.addItem(card);
+function addCardSubmitHandler(data) {
+  api
+    .postCard(data)
+    .then(() => {})
+    .catch((err) => {
+      console.log(err);
+    });
+  // const card = makeNewCard({ name: title, link: url });
+  // cardsList.addItem(card);
 }
 
 // calls
