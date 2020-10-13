@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "build": "rimraf dist && webpack",
-    "dev": "webpack-dev-server --open 'Firefox Developer Edition' --watch",
+    "dev": "webpack serve --open 'Firefox Developer Edition' --watch",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
@@ -39,8 +39,8 @@
     "postcss-loader": "^4.0.4",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
