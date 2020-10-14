@@ -1,6 +1,6 @@
 import Popup from './Popup.js';
 
-export default class PopupWithForm extends Popup {
+export default class PopupWithConfirm extends Popup {
   constructor(popupSelector, callback, formSelector) {
     super(popupSelector);
     this._callback = callback;
@@ -11,15 +11,15 @@ export default class PopupWithForm extends Popup {
     this._submitButtonValue = this._submitButton.value;
   }
 
-  _getInputValues() {
-    const formData = new FormData(this._form);
-    const inputValues = Object.fromEntries(formData);
-    return inputValues;
+  open(cardElement, cardId) {
+    super.open();
+    this._cardElement = cardElement;
+    this._id = cardId;
   }
 
   showPatchStatus(status) {
     if (status) {
-      this._submitButton.value = 'Saving...';
+      this._submitButton.value = 'Deleting...';
     } else {
       this._submitButton.value = this._submitButtonValue;
     }
@@ -28,13 +28,12 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('submit', () => {
-      this._callback(this._getInputValues());
+      this._callback(this._cardElement, this._id);
       this.showPatchStatus(true);
     });
   }
 
   close() {
     super.close();
-    this._form.reset();
   }
 }

@@ -15,7 +15,8 @@ HTML, CSS, and JS technologies it demonstrates are:
 - media queries for responsiveness
 - using <abbr title="Document Object Model">DOM</abbr> in JavaScript to edit page content
 - <abbr title="Object Oriented Programming">OOP</abbr>
-- Webpack
+- <abbr title="application programming interface">API</abbr> calls and asynchronous functions
+- Webpack bundling
 
 The website can be accessed [here](https://derekschinke-practicum.github.io/web_project_4/).
 

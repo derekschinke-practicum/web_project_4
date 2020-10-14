@@ -15,27 +15,27 @@
       <main class="main">
         <section class="profile">
           <div class="profile__data">
-            <div
-              role="img"
-              aria-label="Jacques Cousteau"
-              class="profile__avatar"
-              style="
-                background-image: url('https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg');
-              "
-            ></div>
+            <div>
+              <div role="img" aria-label="" class="profile__avatar"></div>
+              <button
+                type="button"
+                aria-label="Edit avatar"
+                class="button button_type_edit-avatar"
+              ></button>
+            </div>
             <div class="profile__info">
               <div class="profile__text">
-                <h1 class="profile__name">Jacques Cousteau</h1>
-                <p class="profile__job">Explorer</p>
+                <h1 class="profile__name"></h1>
+                <p class="profile__job"></p>
               </div>
               <button
                 type="button"
-                aria-label="Edit"
+                aria-label="Edit profile"
                 class="button button_type_edit"
               ></button>
             </div>
           </div>
-          <button aria-label="Add" class="button button_type_add"></button>
+          <button aria-label="Add card" class="button button_type_add"></button>
         </section>
 
         <section class="places">
@@ -91,7 +91,36 @@
             <input
               type="submit"
               value="Save"
-              class="button button_type_save popup__button"
+              class="button button_type_submit popup__button"
+            />
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_edit-avatar">
+        <div class="popup__container">
+          <button
+            type="button"
+            aria-label="Close"
+            class="button button_type_close"
+          ></button>
+          <h3 class="popup__title">Change profile picture</h3>
+          <form method="POST" name="popup_type_edit-avatar" class="popup__form">
+            <label>
+              <input
+                type="url"
+                name="url"
+                id="profile-avatar"
+                class="popup__input"
+                placeholder="Image link"
+                required
+              />
+              <span class="popup__error" id="profile-avatar-error"></span>
+            </label>
+            <input
+              type="submit"
+              value="Save"
+              class="button button_type_submit popup__button"
             />
           </form>
         </div>
@@ -138,8 +167,30 @@
 
             <input
               type="submit"
-              value="Save"
-              class="button button_type_save popup__button"
+              value="Create"
+              class="button button_type_submit popup__button"
+            />
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_delete">
+        <div class="popup__container">
+          <button
+            type="button"
+            aria-label="Close"
+            class="button button_type_close"
+          ></button>
+          <h3 class="popup__title">Are you sure?</h3>
+          <form
+            method="POST"
+            class="popup__form popup__form_type_delete"
+            novalidate
+          >
+            <input
+              type="submit"
+              value="Yes"
+              class="button button_type_submit popup__button"
             />
           </form>
         </div>
@@ -166,11 +217,14 @@
         <div role="img" class="card__image"></div>
         <div class="card__info">
           <h2 class="card__title"></h2>
-          <button
-            type="button"
-            aria-label="Like"
-            class="button button_type_like"
-          ></button>
+          <div>
+            <button
+              type="button"
+              aria-label="Like"
+              class="button button_type_like"
+            ></button>
+            <p class="card__likes"></p>
+          </div>
         </div>
       </li>
     </template>
