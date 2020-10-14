@@ -1,5 +1,12 @@
 export default class Card {
-  constructor(card, userId, cardTemplate, handleLikeClick, handleCardClick) {
+  constructor(
+    card,
+    userId,
+    cardTemplate,
+    handleLikeClick,
+    handleCardClick,
+    handleDeleteClick
+  ) {
     this._card = card;
     this._name = this._card.name;
     this._link = this._card.link;
@@ -10,6 +17,7 @@ export default class Card {
     this._cardTemplate = cardTemplate;
     this._handleLikeClick = handleLikeClick;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
     this._cardElement = this._cardTemplate.cloneNode(true);
     this._cardLikes = this._cardElement.querySelector('.card__likes');
   }
@@ -33,19 +41,15 @@ export default class Card {
     return false;
   }
 
-  _handleDeleteCard() {
-    this._cardElement.remove();
-  }
-
   _addEventListeners() {
     this._likeButton = this._cardElement.querySelector('.button_type_like');
-    const deleteButton = this._cardElement.querySelector('.button_type_delete');
+    this._deleteButton = this._cardElement.querySelector('.button_type_delete');
 
     this._likeButton.addEventListener('click', () => {
       this._handleLikeIcon();
     });
-    deleteButton.addEventListener('click', () => {
-      this._handleDeleteCard();
+    this._deleteButton.addEventListener('click', () => {
+      this._handleDeleteClick(this._cardElement, this._id);
     });
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick({ name: this._name, link: this._link });
@@ -53,12 +57,12 @@ export default class Card {
   }
 
   getCardElement() {
-    const cardTitle = this._cardElement.querySelector('.card__title');
+    this._cardTitle = this._cardElement.querySelector('.card__title');
     this._cardImage = this._cardElement.querySelector('.card__image');
 
     this._cardLikes.textContent = this._likes.length;
 
-    cardTitle.textContent = this._name;
+    this._cardTitle.textContent = this._name;
     this._cardImage.style.backgroundImage = `url("${this._link}")`;
 
     this._addEventListeners();

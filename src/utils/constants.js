@@ -27,9 +27,9 @@ export const jobInput = document.querySelector('.popup__input_type_job');
 export const editAvatarPopupSelector = '.popup_type_edit-avatar';
 export const editAvatarButton = document.querySelector('.profile__avatar');
 
-export const deleteCardPopupSelector = '.popup_type_delete';
-
 export const addCardButton = document.querySelector('.button_type_add');
 export const addCardPopupSelector = '.popup_type_add';
+
+export const deleteCardPopupSelector = '.popup_type_delete';
 
 export const imagePopupSelector = '.popup_type_image';

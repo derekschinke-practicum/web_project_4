@@ -35,9 +35,9 @@ import UserInfo from './components/UserInfo.js';
 import Section from './components/Section.js';
 import Card from './components/Card.js';
 import PopupWithForm from './components/PopupWithForm.js';
+import PopupWithConfirm from './components/PopupWithConfirm.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import FormValidation from './components/FormValidation.js';
-import Popup from './components/Popup';
 
 // constants
 
@@ -63,11 +63,11 @@ const editAvatarPopup = new PopupWithForm(
   formValidationSettings.formSelector
 );
 
-// const deleteCardPopup = new PopupWithForm(
-//   deleteCardPopupSelector,
-//   deleteCardSubmitHandler,
-//   formValidationSettings.formSelector
-// );
+const deleteCardPopup = new PopupWithConfirm(
+  deleteCardPopupSelector,
+  deleteCardSubmitHandler,
+  formValidationSettings.formSelector
+);
 
 const addCardPopup = new PopupWithForm(
   addCardPopupSelector,
@@ -97,7 +97,8 @@ function makeNewCard(data, userId) {
     userId,
     cardTemplate,
     handleLikeClick,
-    handleCardClick
+    handleCardClick,
+    openDeletePopup
   );
   return card.getCardElement();
 }
@@ -147,27 +148,37 @@ function handleLikeClick(card, cardId, isLiked) {
     });
 }
 
-// function deleteCardSubmitHandler(cardId, card) {
-//   api
-//     .deleteCard(cardId)
-//     .then(() => {
-//       deleteCardPopup.close();
-//       card.remove()
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }
-
 function addCardSubmitHandler(data) {
   api
     .postCard(data)
-    .then(() => {})
+    .then((card) => {
+      cardsList.addItem(makeNewCard(card, card.owner._id), true);
+    })
+    .then(() => {
+      addCardPopup.close();
+    })
     .catch((err) => {
       console.log(err);
     });
-  // const card = makeNewCard({ name: title, link: url });
-  // cardsList.addItem(card);
+}
+
+function openDeletePopup(cardElement, cardId) {
+  deleteCardPopup.open(cardElement, cardId);
+}
+
+function deleteCardSubmitHandler(cardElement, cardId) {
+  api
+    .deleteCard(cardId)
+    .then(() => {
+      deleteCardPopup.close();
+      cardElement.remove();
+    })
+    .then(() => {
+      deleteCardPopup.showPatchStatus(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 // calls
@@ -186,7 +197,7 @@ api
   .getInitialCardsAndUserInfo()
   .then(([initialCards, userInfo]) => {
     initialCards.forEach((card) => {
-      cardsList.addItem(makeNewCard(card, userInfo._id));
+      cardsList.addItem(makeNewCard(card, userInfo._id), false);
     });
   })
   .catch((err) => {
@@ -208,6 +219,8 @@ editAvatarPopup.setEventListeners();
 
 addCardButton.addEventListener('click', () => addCardPopup.open());
 addCardPopup.setEventListeners();
+
+deleteCardPopup.setEventListeners();
 
 imagePopup.setEventListeners();
 

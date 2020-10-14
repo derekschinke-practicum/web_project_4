@@ -7,7 +7,6 @@
 @import url('./_type/_type/button_type_close_type_image.css');
 @import url('./_type/button_type_submit.css');
 @import url('./_type/button_type_delete.css');
-@import url('./_type/button_type_yes.css');
 
 .button {
   transition: opacity 0.2s ease;
