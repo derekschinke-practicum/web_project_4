@@ -6,8 +6,7 @@ import 'regenerator-runtime/runtime';
 
 // cssImports
 import 'normalize.css';
-import './vendor/fonts/fonts.css';
-import './pages/index.css';
+import './index.css';
 
 // scriptImports
 import {
@@ -15,32 +14,39 @@ import {
   jobSelector,
   avatarSelector,
   placesListSelector,
-  cardTemplate,
   formValidationSettings,
-  popupForms,
-  editProfileButton,
   editProfilePopupSelector,
-  nameInput,
-  jobInput,
   editAvatarPopupSelector,
-  editAvatarButton,
   deleteCardPopupSelector,
-  addCardButton,
   addCardPopupSelector,
   imagePopupSelector,
-} from './utils/constants.js';
+} from '../../utils/constants.js';
 
-import Api from './components/Api.js';
-import UserInfo from './components/UserInfo.js';
-import Section from './components/Section.js';
-import Card from './components/Card.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import PopupWithConfirm from './components/PopupWithConfirm.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import FormValidation from './components/FormValidation.js';
+import Api from '../../components/Api.js';
+import UserInfo from '../../components/UserInfo.js';
+import Section from '../../components/Section.js';
+import Card from '../../components/Card.js';
+import PopupWithForm from '../../components/PopupWithForm.js';
+import PopupWithConfirm from '../../components/PopupWithConfirm.js';
+import PopupWithImage from '../../components/PopupWithImage.js';
+import FormValidation from '../../components/FormValidation.js';
 
 // constants
 
+// domElements
+const cardTemplate = document
+  .querySelector('.card__template')
+  .content.querySelector('.card');
+const popupForms = Array.from(
+  document.querySelectorAll(formValidationSettings.formSelector)
+);
+const editProfileButton = document.querySelector('.button_type_edit');
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_job');
+const editAvatarButton = document.querySelector('.profile__avatar');
+const addCardButton = document.querySelector('.button_type_add');
+
+// classes
 const api = new Api({
   baseUrl: 'https://around.nomoreparties.co/v1/group-5',
   headers: {
@@ -157,6 +163,9 @@ function addCardSubmitHandler(data) {
     .then(() => {
       addCardPopup.close();
     })
+    .then(() => {
+      addCardPopup.showPatchStatus(false);
+    })
     .catch((err) => {
       console.log(err);
     });
@@ -184,18 +193,10 @@ function deleteCardSubmitHandler(cardElement, cardId) {
 // calls
 
 api
-  .getUserInfo()
-  .then((info) => {
-    profileInfo.setUserInfo(info);
-    profileInfo.setUserAvatar(info.avatar);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-api
   .getInitialCardsAndUserInfo()
   .then(([initialCards, userInfo]) => {
+    profileInfo.setUserInfo(userInfo);
+    profileInfo.setUserAvatar(userInfo.avatar);
     initialCards.forEach((card) => {
       cardsList.addItem(makeNewCard(card, userInfo._id), false);
     });

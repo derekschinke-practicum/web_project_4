@@ -1,9 +1,11 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   mode: 'production',
+  entry: path.resolve(__dirname, 'src') + '/pages/index/index.js',
   output: {
     publicPath: '',
   },
@@ -32,14 +34,18 @@ module.exports = {
         use: 'html-loader',
       },
       {
-        test: /\.(png|svg|jpg|gif|woff|woff2)$/,
-        use: 'file-loader',
+        test: /\.(png|svg|jpg|gif)$/,
+        use: 'file-loader?name=./images/[contenthash].[ext]',
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        use: 'file-loader?name=./vendor/[contenthash].[ext]',
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: './src/index.html',
     }),
     new MiniCssExtractPlugin(),
     new ESLintPlugin(),
